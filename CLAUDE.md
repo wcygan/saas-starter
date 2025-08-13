@@ -6,18 +6,18 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ### Development
 ```bash
-pnpm dev              # Start development server with Turbopack
-pnpm build            # Production build
-pnpm start            # Start production server
+bun dev               # Start development server with Turbopack
+bun build             # Production build
+bun start             # Start production server
 ```
 
 ### Database Operations
 ```bash
-pnpm db:setup         # Create .env file with database setup
-pnpm db:migrate       # Run database migrations
-pnpm db:seed          # Seed database with test user (test@test.com / admin123)
-pnpm db:generate      # Generate new migrations from schema changes
-pnpm db:studio        # Launch Drizzle Studio database GUI
+bun db:setup          # Create .env file with database setup
+bun db:migrate        # Run database migrations
+bun db:seed           # Seed database with test user (test@test.com / admin123)
+bun db:generate       # Generate new migrations from schema changes
+bun db:studio         # Launch Drizzle Studio database GUI
 ```
 
 ### Stripe Development
@@ -64,8 +64,8 @@ stripe listen --forward-to localhost:3000/api/stripe/webhook  # Local webhook te
 ### Migration Commands
 ```bash
 # After schema changes in lib/db/schema.ts
-pnpm db:generate      # Create migration file
-pnpm db:migrate       # Apply migrations to database
+bun db:generate       # Create migration file
+bun db:migrate        # Apply migrations to database
 ```
 
 ## Authentication System
@@ -144,7 +144,7 @@ No tests currently exist. For comprehensive coverage, implement:
 
 **Unit Testing (Vitest + Testing Library)**
 ```bash
-pnpm add -D vitest @testing-library/react @testing-library/jest-dom jsdom
+bun add -D vitest @testing-library/react @testing-library/jest-dom jsdom
 ```
 - Authentication utilities (`lib/auth/`)
 - Database queries (`lib/db/queries.ts`)  
@@ -152,7 +152,7 @@ pnpm add -D vitest @testing-library/react @testing-library/jest-dom jsdom
 
 **Integration Testing (Vitest + TestContainers)**
 ```bash
-pnpm add -D @testcontainers/postgresql
+bun add -D @testcontainers/postgresql
 ```
 - API routes with database interactions
 - Stripe webhook processing
@@ -160,7 +160,7 @@ pnpm add -D @testcontainers/postgresql
 
 **E2E Testing (Playwright)**
 ```bash  
-pnpm add -D @playwright/test
+bun add -D @playwright/test
 ```
 - Complete user flows (registration, subscription, dashboard)
 - Cross-browser compatibility testing
@@ -193,7 +193,7 @@ BASE_URL="http://localhost:3000"
 
 ### Adding New Team Features
 1. Update database schema in `lib/db/schema.ts`
-2. Generate and run migrations: `pnpm db:generate && pnpm db:migrate`
+2. Generate and run migrations: `bun db:generate && bun db:migrate`
 3. Add server actions with `validatedActionWithUser` or `withTeam`
 4. Implement UI components with proper permission checks
 5. Add activity logging for audit trail
